@@ -30,4 +30,23 @@ public class UsersController : Controller
 
         return View(model);
     }
+
+    [HttpPost]
+    public ViewResult GetListOfActiveUsers(bool isActive)
+    {
+        var items = _userService.FilterByActive(isActive).Select(p => new UserListItemViewModel {
+            Id = p.Id,
+            Forename = p.Forename,
+            Surname = p.Surname,
+            Email = p.Email,
+            IsActive = isActive,
+            DateOfBirth = p.DateOfBirth
+        });
+
+        var model = new UserListViewModel
+        {
+            Items = items.ToList()
+        };
+        return View(model);
+    }
 }

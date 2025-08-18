@@ -1,3 +1,4 @@
+using System.Linq;
 using UserManagement.Models;
 using UserManagement.Services.Domain.Interfaces;
 using UserManagement.Web.Models.Users;
@@ -16,6 +17,7 @@ public class UserControllerTests
 
         // Act: Invokes the method under test with the arranged parameters.
         var result = controller.List();
+        //var result2 = controller.GetListOfActiveUsers();
 
         // Assert: Verifies that the action of the method under test behaves as expected.
         result.Model
