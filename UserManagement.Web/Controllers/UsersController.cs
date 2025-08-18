@@ -11,9 +11,9 @@ public class UsersController : Controller
     public UsersController(IUserService userService) => _userService = userService;
 
     [HttpGet]
-    public ViewResult List()
+    public ViewResult List(string id)
     {
-        var items = _userService.GetAll().Select(p => new UserListItemViewModel
+        var items = _userService.Get(id).Select(p => new UserListItemViewModel
         {
             Id = p.Id,
             Forename = p.Forename,
@@ -28,25 +28,6 @@ public class UsersController : Controller
             Items = items.ToList()
         };
 
-        return View(model);
-    }
-
-    [HttpPost]
-    public ViewResult GetListOfActiveUsers(bool isActive)
-    {
-        var items = _userService.FilterByActive(isActive).Select(p => new UserListItemViewModel {
-            Id = p.Id,
-            Forename = p.Forename,
-            Surname = p.Surname,
-            Email = p.Email,
-            IsActive = isActive,
-            DateOfBirth = p.DateOfBirth
-        });
-
-        var model = new UserListViewModel
-        {
-            Items = items.ToList()
-        };
         return View(model);
     }
 }

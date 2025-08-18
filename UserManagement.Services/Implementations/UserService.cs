@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UserManagement.Data;
 using UserManagement.Models;
@@ -16,10 +17,19 @@ public class UserService : IUserService
     /// </summary>
     /// <param name="isActive"></param>
     /// <returns></returns>
-    public IEnumerable<User> FilterByActive(bool isActive)
+    public IEnumerable<User> Get(string id)
     {
-          return _dataAccess.GetAll<User>().Where(user => user.IsActive == isActive);
-    }
+        switch (id)
+        {
+            case null:
+            case "all":
+                return _dataAccess.GetAll<User>(); 
+            case "active":
+                return _dataAccess.GetAll<User>().Where(user => user.IsActive == true);
+            case "nonActive":
+                return _dataAccess.GetAll<User>().Where(user => user.IsActive == false);
 
-    public IEnumerable<User> GetAll() => _dataAccess.GetAll<User>();
+        }
+        throw new ArgumentException();
+    }
 }
