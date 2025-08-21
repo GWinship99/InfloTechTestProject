@@ -21,7 +21,7 @@ public class UserServiceTests
         result.Should().BeSameAs(users);
     }
 
-    private IQueryable<User> SetupUsers(string forename = "Johnny", string surname = "User", string email = "juser@example.com", bool isActive = true, string dateOfBirth = "01/01/2001")
+    private IQueryable<User> SetupUsers(string forename = "Johnny", string surname = "User", string email = "juser@example.com", bool isActive = true, string dateOfBirth = "2001-01-01")
     {
         var users = new[]
         {
