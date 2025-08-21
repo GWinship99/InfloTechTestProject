@@ -9,12 +9,13 @@ public class UserServiceTests
     [Fact]
     public void GetAll_WhenContextReturnsEntities_MustReturnSameEntities()
     {
+        User user = new User();
         // Arrange: Initializes objects and sets the value of the data that is passed to the method under test.
         var service = CreateService();
         var users = SetupUsers();
 
         // Act: Invokes the method under test with the arranged parameters.
-        var result = service.Get();
+        var result = service.Get("all",0, user);
 
         // Assert: Verifies that the action of the method under test behaves as expected.
         result.Should().BeSameAs(users);

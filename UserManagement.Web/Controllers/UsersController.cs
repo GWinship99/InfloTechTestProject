@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using UserManagement.Models;
 using UserManagement.Services.Domain.Interfaces;
 using UserManagement.Web.Models.Users;
 
@@ -11,9 +12,11 @@ public class UsersController : Controller
     public UsersController(IUserService userService) => _userService = userService;
 
     [HttpGet]
-    public ViewResult List(string id)
+    [HttpPost]
+    [HttpPut]
+    public ViewResult List(string id, long userID, User user)
     {
-        var items = _userService.Get(id).Select(p => new UserListItemViewModel
+        var items = _userService.Get(id, userID, user).Select(p => new UserListItemViewModel
         {
             Id = p.Id,
             Forename = p.Forename,
@@ -30,4 +33,17 @@ public class UsersController : Controller
 
         return View(model);
     }
+
+    //[HttpPost]
+    //public ViewResult Edit(long userID)
+    //{
+
+    //}
+    [Route("Add")]
+    public ViewResult OpenAddView()
+    {
+
+        return View("Add");
+    }
+
 }
