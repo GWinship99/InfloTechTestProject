@@ -7,35 +7,35 @@
         <legend>User Information</legend>
         <p>
             <label for="Id">ID:</label>
-            <input type="number" name="id" value="" />
+            <input type="number" name="id" value="@Model.Id" readonly />
         </p>
 
         <p>
             <label for="forename">Forename:</label>
-            <input type="text" name="forename" value="" />
+            <input type="text" name="forename" value="@Model.Forename" />
         </p>
 
         <p>
             <label for="surname">Surname:</label>
-            <input type="text" name="surname" value="" />
+            <input type="text" name="surname" value="@Model.Surname" />
         </p>
 
         <p>
             <label for="email">Email:</label>
-            <input type="text" name="email" value="" />
+            <input type="text" name="email" value="@Model.Email" />
         </p>
 
         <p>
             <label for="isActive">Is Active:</label>
-            <input type="text" name="isActive" value="" />
+            <input type="text" name="isActive" value="@(Model.IsActive ? "Yes" : "No")" />
         </p>
 
         <p>
             <label for="dateOfBirth">Date Of Birth:</label>
-            <input type="text" name="dateOfBirth" value="" />
+            <input type="text" name="dateOfBirth" value="@Model.DateOfBirth" />
         </p>
 
-        <p><button asp-controller="users" asp-action="Add" type="submit" name="buttonSubmit">Add User</button></p>
+        <p><button asp-controller="users" asp-action="Edit" type="submit" name="buttonSubmit">Edit User</button></p>
     </fieldset>
 </form>
 

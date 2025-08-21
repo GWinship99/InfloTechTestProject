@@ -5,7 +5,12 @@ namespace UserManagement.Services.Domain.Interfaces;
 
 public interface IUserService 
 {
-    IEnumerable<User> Get(string id, long userID, User user);
-    
-    //void Add(User user);
+
+    IEnumerable<User> GetAll();
+    IEnumerable<User> GetActive();
+    IEnumerable<User> GetNonactive();
+    IEnumerable<User> GetByUserID(long userID);
+    IEnumerable<User> DeleteUser(long userID);
+    IEnumerable<User> AddUser(User user);
+    IEnumerable<User> EditUser(User user);
 }

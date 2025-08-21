@@ -15,7 +15,7 @@ public class UserControllerTests
         var users = SetupUsers();
 
         // Act: Invokes the method under test with the arranged parameters.
-        var result = controller.List("all",0);
+        var result = controller.List("all",0, new User());
 
         // Assert: Verifies that the action of the method under test behaves as expected.
         result.Model
@@ -38,7 +38,7 @@ public class UserControllerTests
         };
 
         _userService
-            .Setup(s => s.Get("all", 0))
+            .Setup(s => s.Get("all", 0, new User()))
             .Returns(users);
 
         return users;
