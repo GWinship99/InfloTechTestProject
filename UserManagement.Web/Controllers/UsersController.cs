@@ -61,6 +61,7 @@ public class UsersController : Controller
     {
         return UserListToView(_userService.DeleteUser(userID));
     }
+
     [HttpPost]
     [HttpPut]
     [Route("Add")]
@@ -83,6 +84,7 @@ public class UsersController : Controller
     {
         return UserListToView(_userService.EditUser(user));
     }
+
     [Route("Edit")]
     public ViewResult OpenEditView(long userID, string forename, string surname, string email, bool isActive, string dateOfBirth)
     {

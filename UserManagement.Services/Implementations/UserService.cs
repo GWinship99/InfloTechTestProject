@@ -13,12 +13,12 @@ public class UserService : IUserService
 
     public IEnumerable<User> GetAll()
     {
-        return _dataAccess.GetAll<User>(); // returns all users if route id is equal to all users.
+        return _dataAccess.GetAll<User>(); 
     }
 
     public IEnumerable<User> GetActive()
     {
-        return _dataAccess.GetAll<User>().Where(user => user.IsActive == true); // returns all active users if route id is equal to active users.
+        return _dataAccess.GetAll<User>().Where(user => user.IsActive == true); 
     }
     public IEnumerable<User> GetNonactive()
     {
@@ -55,9 +55,9 @@ public class UserService : IUserService
 
     public IEnumerable<User> EditUser(User user)
     {
-        //create a new user
+        //update an existing user
         _dataAccess.Update<User>(user);
-        // return the list with the new user added to it
+        // return the list with the edited user in it
         return _dataAccess.GetAll<User>();
     }
 }
