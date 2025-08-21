@@ -1,6 +1,6 @@
 ﻿@model UserManagement.Web.Models.Users.UserListItemViewModel
 
-<h2>Add User</h2>
+<h2>Edit User</h2>
 
 <form method="post">
     <fieldset>
@@ -27,7 +27,7 @@
 
         <p>
             <label for="isActive">Is Active:</label>
-            <input type="text" name="isActive" value="@(Model.IsActive ? "Yes" : "No")" />
+            <input type="checkbox" name="isActive" value="true" @(Model.IsActive ? "checked" : "") />
         </p>
 
         <p>
