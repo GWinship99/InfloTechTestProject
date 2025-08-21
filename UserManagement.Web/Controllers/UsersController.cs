@@ -12,8 +12,6 @@ public class UsersController : Controller
     public UsersController(IUserService userService) => _userService = userService;
 
     [HttpGet]
-    [HttpPost]
-    [HttpPut]
     public ViewResult List(string id, long userID, User user)
     {
         var items = _userService.Get(id, userID, user).Select(p => new UserListItemViewModel
@@ -31,7 +29,13 @@ public class UsersController : Controller
             Items = items.ToList()
         };
 
-        return View(model);
+        return View("List", model);
+    }
+    [HttpPost]
+    [HttpPut]
+    public ViewResult Add(User user)
+    {
+        return List("add",0,user);
     }
 
     //[HttpPost]
